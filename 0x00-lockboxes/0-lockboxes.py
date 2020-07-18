@@ -31,7 +31,7 @@ def canUnlockAll(boxes):
                 new_k += boxes[key]
             unlock[key] = True
         # If all boxes unlock return True
-        if all(unlock.values()):
+        if all(unlock.values()) and len(unlock) == len(boxes):
             return True
         # Change keys for the new keys to check
         keys = new_k
