@@ -29,7 +29,7 @@ def canUnlockAll(boxes):
         for key in keys:
             if unlock[key] is False:
                 new_k += boxes[key]
-            unlock[key] = True
+                unlock[key] = True
         # If all boxes unlock return True
         if all(unlock.values()) and len(unlock) == len(boxes):
             return True
