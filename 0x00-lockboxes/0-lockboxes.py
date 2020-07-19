@@ -14,9 +14,11 @@ def canUnlockAll(boxes):
     # check if boxes and sub boxes are a list
     if type(boxes) is not list or not all(type(box) is list for box in boxes):
         return False
+    if len(boxes) == 1:
+        return True
     # check if first box is empty
-    if not boxes[0] and len(boxes) > 1:
-        return False
+    if not boxes[0] and len(boxes) == 1:
+        return True
     # dictionary of all boxes, all boxes are lock here
     unlock = {k: False for k in range(len(boxes))}
     # unlock first box
