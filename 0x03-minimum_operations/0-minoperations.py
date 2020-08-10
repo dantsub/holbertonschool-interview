@@ -14,11 +14,10 @@ def minOperations(n):
     Return:
         minimum number of operations (an integer)
     """
-    minOp = 0
+    minOp, div = 0, 2
     while isinstance(n, int) and n > 1:
-        for div in range(2, n + 1):
-            if not n % div:
-                break
+        while n % div:
+            div += 1
         minOp += div
         n = int(n / div)
     return minOp
