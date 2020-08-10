@@ -6,7 +6,7 @@
 def minOperations(n):
     """minOperations is a method that calculates
     the fewest number of operations needed to result
-    in exactly n H characters 
+    in exactly n H characters
 
     Args:
         n (int): amount of H
