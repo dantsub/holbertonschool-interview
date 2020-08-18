@@ -1,4 +1,9 @@
 #include "sandpiles.h"
+/**
+ * print_grid_unstable - print grid
+ * @grid: grid to print
+ * Return: Nothing
+ */
 void print_grid_unstable(int grid[3][3])
 {
 	int i, j;
@@ -20,17 +25,30 @@ void print_grid_unstable(int grid[3][3])
  * @grid1: sandpile to check
  * Return: 0 if sandpiles is stable otherwise -1
  */
-int sandpiles_check(int grid1[3][3])
+int sandpiles_check(int grid1[3][3], int grid[3][3])
 {
-	int i, j;
+	int i, j, check = 0;
 
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
 		{
 			if (grid1[i][j] > 3)
-				return (1);
+			{
+				grid[i][j] = 1;
+				check++;
+			}
+			else
+			{
+				grid[i][j] = 0;
+			}
+			
 		}
+	}
+	if (check)
+	{
+		print_grid_unstable(grid1);
+		return (1);
 	}
 	return (0);
 }
@@ -67,28 +85,25 @@ void redistribution_sand(int grid1[3][3], int i, int j)
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int i, j, num = 0, check = 0;
+	int i, j, check = 0;
+	int grid[3][3];
 
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
-		{
-			num = grid1[i][j];
-			grid1[i][j] = num + grid2[i][j];
-		}
+			grid1[i][j] += grid2[i][j];
 	}
-	check = sandpiles_check(grid1);
+	check = sandpiles_check(grid1, grid);
 	while (check)
 	{
-		print_grid_unstable(grid1);
 		for (i = 0; i < 3; i++)
 		{
 			for (j = 0; j < 3; j++)
 			{
-				if (grid1[i][j] > 3)
+				if (grid[i][j] == 1)
 					redistribution_sand(grid1, i, j);
 			}
 		}
-		check = sandpiles_check(grid1);
+		check = sandpiles_check(grid1, grid);
 	}
 }
