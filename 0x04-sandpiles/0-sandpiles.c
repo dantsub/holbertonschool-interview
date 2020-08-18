@@ -23,6 +23,7 @@ void print_grid_unstable(int grid[3][3])
 /**
  * sandpiles_check - check if sandpiles is stable or not
  * @grid1: sandpile to check
+ * @grid: grid contains sand will be take off
  * Return: 0 if sandpiles is stable otherwise -1
  */
 int sandpiles_check(int grid1[3][3], int grid[3][3])
@@ -35,14 +36,13 @@ int sandpiles_check(int grid1[3][3], int grid[3][3])
 		{
 			if (grid1[i][j] > 3)
 			{
-				grid[i][j] = 1;
 				check++;
+				grid[i][j] = 1;
 			}
 			else
 			{
 				grid[i][j] = 0;
 			}
-			
 		}
 	}
 	if (check)
@@ -65,7 +65,7 @@ void redistribution_sand(int grid1[3][3], int i, int j)
 	int col_t, col_l, col_r, col_b;
 
 	row_t = i - 1, row_l = i, row_r = i, row_b = i + 1;
-	col_t = j - 1, col_l = j, col_r = j, col_b = j + 1;
+	col_t = j, col_l = j - 1, col_r = j + 1, col_b = j;
 
 	grid1[i][j] -= 4;
 	if (row_t >= 0 && row_t < 3 && col_t >= 0 && col_t < 3)
