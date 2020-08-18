@@ -70,21 +70,25 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	int i, j, num = 0, check = 0;
 
 	for (i = 0; i < 3; i++)
+	{
 		for (j = 0; j < 3; j++)
 		{
 			num = grid1[i][j];
 			grid1[i][j] = num + grid2[i][j];
 		}
+	}
 	check = sandpiles_check(grid1);
 	while (check)
 	{
 		print_grid_unstable(grid1);
 		for (i = 0; i < 3; i++)
+		{
 			for (j = 0; j < 3; j++)
 			{
 				if (grid1[i][j] > 3)
 					redistribution_sand(grid1, i, j);
 			}
+		}
 		check = sandpiles_check(grid1);
 	}
 }
