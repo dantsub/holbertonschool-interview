@@ -7,7 +7,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *cpy = *head;
-	int buff[1024], i = 0, j = 0, mid;
+	int buff[2048], i = 0, j = 0, mid;
 
 	if (!head || (cpy && !cpy->next))
 		return (1);
