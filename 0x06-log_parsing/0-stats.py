@@ -33,7 +33,7 @@ try:
             size += int(info[1])
         if not i % 10:
             print_info(codes, size)
-    print_info(codes, size)
 except KeyboardInterrupt:
     print_info(codes, size)
     raise
+print_info(codes, size)
