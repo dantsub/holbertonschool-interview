@@ -17,7 +17,7 @@ def print_info(codes, size):
         size (int): size of files
     """
     print("File size: {}".format(size))
-    for key, val in codes.items():
+    for key, val in sorted(codes.items()):
         if val > 0:
             print("{}: {}".format(key, val))
 
