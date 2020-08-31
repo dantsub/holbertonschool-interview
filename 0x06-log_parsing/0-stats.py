@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""stats module
+"""
 from sys import stdin
 
 
@@ -6,7 +8,14 @@ codes = {'200': 0, '301': 0, '400': 0, '401': 0,
          '403': 0, '404': 0, '405': 0, '500': 0}
 size = 0
 
+
 def print_info(codes, size):
+    """print_info method print needed info
+
+    Args:
+        codes (dict): code status
+        size (int): size of files
+    """
     print("File size: {}".format(size))
     for key, val in codes.items():
         if val > 0:
