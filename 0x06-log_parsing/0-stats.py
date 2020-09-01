@@ -32,8 +32,8 @@ if __name__ == '__main__':
             except:
                 pass
             if not i % 10:
-                print_info(codes, size)
+                print_info()
     except KeyboardInterrupt:
-        print_info(codes, size)
+        print_info()
         raise
-    print_info(codes, size)
+    print_info()
