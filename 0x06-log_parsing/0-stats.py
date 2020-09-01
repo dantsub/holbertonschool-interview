@@ -25,12 +25,9 @@ try:
     for i, line in enumerate(stdin, 1):
         line = line[-9:]
         info = line.split()
-        if len(info) > 2 and info[1] in codes.keys():
-            codes[info[1]] += 1
-            size += int(info[2])
-        if len(info) == 2 and info[0] in codes.keys():
-            codes[info[0]] += 1
-            size += int(info[1])
+        if info[-2] in codes.keys():
+            codes[info[-2]] += 1
+            size += int(info[-1])
         if not i % 10:
             print_info(codes, size)
 except KeyboardInterrupt:
