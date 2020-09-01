@@ -23,11 +23,14 @@ if __name__ == '__main__':
 
     try:
         for i, line in enumerate(stdin, 1):
-            line = line[-9:]
-            info = line.split()
-            if info[-2] in codes.keys():
-                codes[info[-2]] += 1
-                size += int(info[-1])
+            try:
+                line = line[-9:]
+                info = line.split()
+                if info[-2] in codes.keys():
+                    codes[info[-2]] += 1
+                    size += int(info[-1])
+            except:
+                pass
             if not i % 10:
                 print_info(codes, size)
     except KeyboardInterrupt:
