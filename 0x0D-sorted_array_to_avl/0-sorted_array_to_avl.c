@@ -3,6 +3,7 @@
  * sorted_array_to_avl - convert array to avl tree
  * @array: array to convert.
  * @size: size of array.
+ * Return: tree.
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
