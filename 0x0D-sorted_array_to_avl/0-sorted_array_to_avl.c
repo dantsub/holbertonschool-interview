@@ -7,7 +7,7 @@
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *tree = NULL;
-	
+
 	tree = recursive_tree(array, 0, (int)size - 1);
 	if (!tree)
 		return (NULL);
@@ -33,6 +33,13 @@ avl_t *create_node(int n)
 	node->n = n;
 	return (node);
 }
+/**
+ * recursive_tree - add node with recursive fuction
+ * @array: array.
+ * @ben: begin.
+ * @end: end.
+ * Return: tree
+ */
 avl_t *recursive_tree(int *array, int ben, int end)
 {
 	avl_t *left = NULL, *right = NULL, *parent = NULL;
@@ -44,6 +51,8 @@ avl_t *recursive_tree(int *array, int ben, int end)
 	left = recursive_tree(array, ben, n - 1);
 	right = recursive_tree(array, n + 1, end);
 	parent = create_node(array[n]);
+	if (!parent)
+		return (NULL);
 	parent->left = left;
 	parent->right = right;
 	if (left)
