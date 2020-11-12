@@ -35,7 +35,7 @@ skiplist_t *linear_skip(skiplist_t *head, int value)
 	if (!head)
 		return (NULL);
 	end = head;
-	while (end && end->next && end->n <= value)
+	while ((end && end->next) && end->n < value)
 	{
 		ben = end;
 		if (!end->express)
@@ -43,7 +43,6 @@ skiplist_t *linear_skip(skiplist_t *head, int value)
 				end = end->next;
 		else
 			end = end->express;
-
 		printf(format, end->index, end->n);
 	}
 	return (search_skip(ben, end, value));
