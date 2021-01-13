@@ -85,10 +85,10 @@ int main(int ac, char **av)
 	int len1 = 0, len2 = 0;
 	char *num1 = av[1], *num2 = av[2], *result = NULL;
 
-	if (ac != 3)
+	if (ac != 3 || _isdigit(num1) || _isdigit(num2))
 		err_message("Error");
-	if (_isdigit(num1) || _isdigit(num2))
-		err_message("Error");
+	if (av[1][0] == 48 || av[2][0] == 48)
+		_puts("0"), exit(0);
 
 	while (num1[len1])
 		len1++;
