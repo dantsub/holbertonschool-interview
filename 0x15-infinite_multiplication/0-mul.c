@@ -54,7 +54,7 @@ char *operations(char *num1, char *num2, int len1, int len2)
 
 	result = malloc(sizeof(char) * len_total);
 	if (!result)
-		return (NULL);
+		err_message("Error");
 	for (i = 0; i < len_total; i++)
 		result[i] = '0';
 	for (i = len1 - 1; i >= 0; i--)
