@@ -30,4 +30,3 @@ def makeChange(coins, total):
 
     check = cpy_total > 0 and ncoins > 0
     return -1 if check or ncoins == 0 else ncoins
-
