@@ -11,16 +11,18 @@ def makeChange(coins, total):
 
     Args:
         coins ([list]): a list of the values of the coins in your possession
-        total ([type]): amount
+        total ([number]): amount
     Return: fewest number of coins needed to meet total
     """
     if total <= 0:
         return 0
 
     coins.sort(reverse=True)
+
     i, ncoins = (0, 0)
     cpy_total = total
     len_coins = len(coins)
+
     while(i < len_coins and cpy_total > 0):
         if (cpy_total - coins[i]) >= 0:
             cpy_total -= coins[i]
