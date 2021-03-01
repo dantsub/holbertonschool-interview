@@ -38,13 +38,10 @@ List *add_node_end(List **list, char *str)
 		return (NULL);
 
 	if (!(*list))
-		*list = node;
-	else if (!(*list)->prev)
 	{
-		node->prev = (*list);
-		node->next = (*list);
-		(*list)->prev = node;
-		(*list)->next = node;
+		node->next = node;
+		node->prev = node;
+		*list = node;
 	}
 	else
 	{
@@ -71,13 +68,9 @@ List *add_node_begin(List **list, char *str)
 		return (NULL);
 
 	if (!(*list))
-		*list = node;
-	else if (!(*list)->prev)
 	{
-		(*list)->next = node;
-		(*list)->prev = node;
-		node->prev = (*list);
-		node->next = (*list);
+		node->next = node;
+		node->prev = node;
 		*list = node;
 	}
 	else
