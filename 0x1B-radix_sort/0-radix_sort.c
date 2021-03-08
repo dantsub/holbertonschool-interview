@@ -40,7 +40,7 @@ void radix_sort(int *array, size_t size)
 	tmp = malloc(sizeof(int *) * size);
 	if (!tmp)
 		return;
-	
+
 	for (i = 0; i < size; i++)
 		max = array[i] > max ? array[i] : max;
 
