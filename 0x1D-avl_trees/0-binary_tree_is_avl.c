@@ -1,34 +1,43 @@
 #include "binary_trees.h"
 
 /**
- * bt_height - goes through a binary tree using pre-order traversal
- * @tree: parent of node.
- * Return: nothing.
- */
-size_t bt_height(const binary_tree_t *tree)
+* greater - finds the maximum number between two
+* @left: fisrt number
+* @right: second number
+* Return: max of two numbers
+**/
+int greater(size_t left, size_t right)
 {
-	size_t h_left, h_right;
+	return (left >= right ? left : right);
+}
 
+/**
+* find_height - finds the height of a binary tree.
+* @tree: pointer to the root node.
+* Return: height of tree
+**/
+int find_height(const binary_tree_t *tree)
+{
 	if (!tree)
 		return (0);
-	h_left = tree->left ? 1 + bt_height(tree->left) : 0;
-	h_right = tree->right ? 1 + bt_height(tree->right) : 0;
-	return (h_left > h_right ? h_left : h_right);
+
+	if (!tree->left && !tree->right)
+		return (0);
+
+	return (1 + greater(find_height(tree->left), find_height(tree->right)));
 }
 /**
- * is_balanced - goes through a binary tree using pre-order traversal
- * @tree: parent of node.
+ * is_balanced - checks if a given bst is balanced.
+ * @tree: pointer to the root node.
  * Return: nothing.
  */
 int is_balanced(const binary_tree_t *tree)
 {
-	int left, right;
-
 	if (!tree)
+		return (1);
+	if (abs(find_height(tree->left) - find_height(tree->right)) > 1)
 		return (0);
-	left = tree->left ? (int)bt_height(tree->left) : -1;
-	right = tree->right ? (int)bt_height(tree->right) : -1;
-	return (left - right);
+	return (is_balanced(tree->left) && is_balanced(tree->right));
 }
 /**
 * is_bst - check if a given tree is valid binary search tree or not
@@ -39,7 +48,7 @@ int is_balanced(const binary_tree_t *tree)
 **/
 int is_bst(const binary_tree_t *tree, int min, int max)
 {
-	if (tree == NULL)
+	if (!tree)
 		return (1);
 	if (tree->n < min || tree->n > max)
 		return (0);
@@ -53,7 +62,7 @@ int is_bst(const binary_tree_t *tree, int min, int max)
 **/
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-	if (tree != NULL && is_bst(tree, INT_MIN, INT_MAX) && is_balanced(tree))
+	if (!tree && is_bst(tree, INT_MIN, INT_MAX) && is_balanced(tree))
 		return (1);
 	return (0);
 }
