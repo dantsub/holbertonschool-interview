@@ -1,6 +1,15 @@
 #include "binary_trees.h"
 
 /**
+ * _abs - get the absolute value of a given number
+ * @x: value to get the absolute value
+ * Return: the absolute value of a given number
+ */
+int _abs(int x)
+{
+	return (x < 0 ? x * -1: x);
+}
+/**
 * greater - finds the maximum number between two
 * @left: fisrt number
 * @right: second number
@@ -35,7 +44,7 @@ int is_balanced(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (1);
-	if (abs(find_height(tree->left) - find_height(tree->right)) > 1)
+	if (_abs(find_height(tree->left) - find_height(tree->right)) > 1)
 		return (0);
 	return (is_balanced(tree->left) && is_balanced(tree->right));
 }
